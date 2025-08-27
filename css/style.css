@@ -1,0 +1,23 @@
+/* styles.css */
+/* Custom CSS for additional styling */
+body {
+    font-family: 'Inter', sans-serif; /* You can change the font family here if desired */
+}
+
+.nav-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add any additional custom styles here */
