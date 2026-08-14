@@ -1,0 +1,2 @@
+:root { --amber: #b85d12; }
+.accent-amber { --accent: var(--amber); }
