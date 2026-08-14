@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#120d08">
+  <meta name="description" content="Learn four algebra rules, watch the pole accident unfold, and solve x, y, and z in an interactive timber puzzle.">
+  <title>Bad Boi Bogans — Lesson 1: The Pole Puzzle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <a class="site-return" href="/">← FREQUENCITY home</a>
+    <header class="hero">
+      <p class="eyebrow">Bad Boi Bogans · Stage 0</p>
+      <h1>The Pole Puzzle</h1>
+      <p class="hero-copy">Learn the rules, see what happened to the timber, then rebuild every broken row to the 12-inch mark.</p>
+    </header>
+
+    <section class="primer-card" aria-labelledby="primer-title">
+      <div class="primer-heading">
+        <p class="eyebrow">Read this before touching the bench</p>
+        <h2 id="primer-title">Four algebra rules you actually need</h2>
+        <p>Algebra is just careful bookkeeping for amounts you cannot name yet. In this lesson every symbol belongs to a real length of timber.</p>
+      </div>
+
+      <ol class="rule-list">
+        <li>
+          <span class="rule-symbol" aria-hidden="true">=</span>
+          <div><h3>The equal sign is a promise</h3><p>Both sides contain the same total amount. It does not mean “the answer comes next.” Here, it is the seam where two equal lengths meet.</p></div>
+        </li>
+        <li>
+          <span class="rule-symbol" aria-hidden="true">x</span>
+          <div><h3>A letter is a missing number</h3><p><code>x</code>, <code>y</code>, and <code>z</code> each stand for a timber length we do not know yet. The same letter always means the same length everywhere it appears.</p></div>
+        </li>
+        <li>
+          <span class="rule-symbol" aria-hidden="true">↔</span>
+          <div><h3>Rearranging does not change the total</h3><p>You can split pieces apart, join them together, or move them around. Twelve inches must still be twelve inches when you finish.</p></div>
+        </li>
+        <li>
+          <span class="rule-symbol" aria-hidden="true">?</span>
+          <div><h3>Use what you know to find what is missing</h3><p>Account for the labelled pieces first. The space left between them and the 12-inch master tells you the unknown length.</p></div>
+        </li>
+      </ol>
+
+      <div class="primer-mission">
+        <div><strong>The mission</strong><p>One master pole survives intact. Three matching 12-inch work poles get broken and lose some of their length tags. Your job is to identify those missing lengths.</p></div>
+        <button class="primary-button" id="primerButton" type="button">I know the rules — show me what happened</button>
+      </div>
+    </section>
+
+    <section class="puzzle-card" id="puzzleCard" aria-labelledby="puzzle-title" hidden>
+      <div class="puzzle-heading">
+        <div>
+          <p class="eyebrow">The actual job</p>
+          <h2 id="puzzle-title">Make every row match the 12-inch master beam</h2>
+        </div>
+        <output class="variable-readout" id="variableReadout" aria-live="polite">x = ? · y = ? · z = ?</output>
+      </div>
+
+      <div class="workshop" id="workshop">
+        <div class="benchmark-zone" aria-label="Master reference beam, 12 inches long">
+          <div class="bench-label">
+            <span>Master reference</span>
+            <span>0</span>
+            <span>6</span>
+            <span>12 in</span>
+          </div>
+          <div class="beam-grid master-grid">
+            <div class="timber master-beam" id="masterBeam" style="--start: 1; --span: 12">
+              <span>12-inch master beam</span>
+            </div>
+            <span class="mid-tick" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="problem-board" id="problemBoard">
+          <div class="finish-line" id="finishLine" aria-hidden="true"><span>12</span></div>
+
+          <div class="stack-row" id="rowX" data-row="x">
+            <div class="row-meta">
+              <span>Row 1</span>
+              <strong>6 + x = 12</strong>
+            </div>
+            <div class="beam-grid stack-grid" aria-label="Row 1: a 6-inch piece plus x must equal 12 inches">
+              <div class="timber known" style="--start: 1; --span: 6"><span>6 in</span></div>
+              <button class="timber unknown target-slot" style="--start: 7; --span: 6" data-variable="x" type="button" aria-label="Unknown x slot in row 1">
+                <span class="slot-mark">x</span><span class="slot-value">?</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stack-row" id="rowY" data-row="y">
+            <div class="row-meta">
+              <span>Row 2</span>
+              <strong>y + y + y = 12</strong>
+            </div>
+            <div class="beam-grid stack-grid" aria-label="Row 2: three equal y pieces must total 12 inches">
+              <button class="timber unknown target-slot" style="--start: 1; --span: 4" data-variable="y" type="button" aria-label="First unknown y slot in row 2">
+                <span class="slot-mark">y</span><span class="slot-value">?</span>
+              </button>
+              <button class="timber unknown target-slot" style="--start: 5; --span: 4" data-variable="y" type="button" aria-label="Second unknown y slot in row 2">
+                <span class="slot-mark">y</span><span class="slot-value">?</span>
+              </button>
+              <button class="timber unknown target-slot" style="--start: 9; --span: 4" data-variable="y" type="button" aria-label="Third unknown y slot in row 2">
+                <span class="slot-mark">y</span><span class="slot-value">?</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stack-row" id="rowZ" data-row="z">
+            <div class="row-meta">
+              <span>Row 3</span>
+              <strong>4 + x + z = 12</strong>
+            </div>
+            <div class="beam-grid stack-grid" aria-label="Row 3: a 4-inch piece plus x plus z must equal 12 inches">
+              <div class="timber known" style="--start: 1; --span: 4"><span>4 in</span></div>
+              <button class="timber unknown target-slot" style="--start: 5; --span: 6" data-variable="x" type="button" aria-label="Unknown x slot in row 3">
+                <span class="slot-mark">x</span><span class="slot-value">?</span>
+              </button>
+              <button class="timber unknown target-slot" style="--start: 11; --span: 2" data-variable="z" type="button" aria-label="Unknown z slot in row 3">
+                <span class="slot-mark">z</span><span class="slot-value">?</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="offcut-tray" id="offcutTray" aria-labelledby="trayTitle">
+          <div class="tray-copy">
+            <strong id="trayTitle">Test cuts</strong>
+            <span>Tap or drag a cut into the glowing lettered gap.</span>
+          </div>
+          <div class="offcut-choices" id="offcutChoices">
+            <button class="timber-choice" type="button" data-value="6" aria-label="Select the 6-inch test cut"><span>6 in</span></button>
+            <button class="timber-choice" type="button" data-value="4" aria-label="Select the 4-inch test cut"><span>4 in</span></button>
+            <button class="timber-choice" type="button" data-value="2" aria-label="Select the 2-inch test cut"><span>2 in</span></button>
+          </div>
+        </div>
+
+        <div class="stage-message" id="stageMessage" role="status" aria-live="polite">
+          <span class="message-kicker" id="messageKicker">Before the algebra</span>
+          <strong id="messageText">Watch the bench build the problem you’re meant to solve.</strong>
+        </div>
+
+        <div class="story-theatre" id="storyTheatre" aria-label="How the pole puzzle was created">
+          <div class="story-copy">
+            <span class="story-step" id="storyStep">Scene 1 of 4</span>
+            <h3 id="storyTitle">One master. Three work poles.</h3>
+            <p id="storyText">Every pole starts at exactly 12 inches. The master stays safely on the top rack so there is always a trustworthy length to compare against.</p>
+          </div>
+
+          <div class="story-stage" aria-hidden="true">
+            <div class="story-row story-master-row">
+              <span class="story-row-name">Master</span>
+              <div class="story-pole story-master-pole"><span>12 inches · reference stays intact</span></div>
+            </div>
+
+            <div class="story-row">
+              <span class="story-row-name">Pole A</span>
+              <div class="story-pole story-work-pole pole-a">
+                <span class="story-whole-label">Work pole A · 12 inches</span>
+                <span class="story-segment segment-a1" style="--story-start:1;--story-span:6;--story-shift:-4px"><span class="piece-label">6 in</span></span>
+                <span class="story-segment story-unknown segment-a2" style="--story-start:7;--story-span:6;--story-shift:4px"><span class="piece-label"><i class="question-label">?</i><i class="variable-label">x</i></span></span>
+                <i class="story-crack" style="--crack-at:50%"></i>
+              </div>
+            </div>
+
+            <div class="story-row">
+              <span class="story-row-name">Pole B</span>
+              <div class="story-pole story-work-pole pole-b">
+                <span class="story-whole-label">Work pole B · 12 inches</span>
+                <span class="story-segment story-unknown segment-b1" style="--story-start:1;--story-span:4;--story-shift:-5px"><span class="piece-label"><i class="question-label">?</i><i class="variable-label">y</i></span></span>
+                <span class="story-segment story-unknown segment-b2" style="--story-start:5;--story-span:4;--story-shift:0px"><span class="piece-label"><i class="question-label">?</i><i class="variable-label">y</i></span></span>
+                <span class="story-segment story-unknown segment-b3" style="--story-start:9;--story-span:4;--story-shift:5px"><span class="piece-label"><i class="question-label">?</i><i class="variable-label">y</i></span></span>
+                <i class="story-crack" style="--crack-at:33.333%"></i>
+                <i class="story-crack" style="--crack-at:66.666%"></i>
+              </div>
+            </div>
+
+            <div class="story-row">
+              <span class="story-row-name">Pole C</span>
+              <div class="story-pole story-work-pole pole-c">
+                <span class="story-whole-label">Work pole C · 12 inches</span>
+                <span class="story-segment segment-c1" style="--story-start:1;--story-span:4;--story-shift:-5px"><span class="piece-label">4 in</span></span>
+                <span class="story-segment story-unknown segment-c2" style="--story-start:5;--story-span:6;--story-shift:0px"><span class="piece-label"><i class="question-label">?</i><i class="variable-label">x</i></span></span>
+                <span class="story-segment story-unknown segment-c3" style="--story-start:11;--story-span:2;--story-shift:5px"><span class="piece-label"><i class="question-label">?</i><i class="variable-label">z</i></span></span>
+                <i class="story-crack" style="--crack-at:33.333%"></i>
+                <i class="story-crack" style="--crack-at:83.333%"></i>
+              </div>
+            </div>
+
+            <div class="story-finish-line"><span>12-inch end</span></div>
+            <div class="story-galahs"><span>&lt;!</span><span>!&gt;</span></div>
+            <div class="story-crasher">🥴</div>
+            <div class="story-impact">BAM!</div>
+          </div>
+
+          <button class="primary-button story-next" id="storyNextButton" type="button">Show the crash</button>
+        </div>
+
+        <div class="seam-theatre" id="seamTheatre" aria-hidden="true">
+          <p class="seam-title">Same timber. Two equal arrangements.</p>
+          <div class="seam-equation">
+            <div class="seam-side seam-pieces" id="seamPieces">
+              <span class="mini-timber">6</span><span class="mini-timber">6</span>
+            </div>
+            <div class="equal-seam" aria-label="equals"><i></i><i></i></div>
+            <div class="seam-side"><span class="mini-timber mini-master" id="seamMaster">12</span></div>
+          </div>
+          <p class="seam-caption" id="seamCaption">The seam says both sides contain the same 12 inches.</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="primary-button" id="actionButton" type="button" hidden>Prove it across the seam</button>
+        <button class="secondary-button" id="replayButton" type="button">Replay what happened</button>
+        <button class="secondary-button" id="resetButton" type="button">Reset bench</button>
+      </div>
+    </section>
+
+    <section class="lesson-text" id="lessonText" aria-labelledby="lesson-title" hidden>
+      <div class="lesson-heading">
+        <p class="eyebrow">What just happened</p>
+        <h2 id="lesson-title">The five teaching steps</h2>
+      </div>
+
+      <article class="lesson-step is-active" id="step1">
+        <span>Step 1</span>
+        <div><h3>The Benchmark</h3><p>The master timber beam is <code>12 inches</code> long. Everything stacked underneath has to finish at that same 12-inch line.</p></div>
+      </article>
+
+      <article class="lesson-step" id="step2">
+        <span>Step 2</span>
+        <div><h3>The Chaos &amp; The Unknowns</h3><p>The master remains intact while three matching work poles break into rows. Some length tags survive; the missing ones become <code>x</code>, <code>y</code>, and <code>z</code>. They are not magic textbook letters—just names for timber lengths you need to identify.</p></div>
+      </article>
+
+      <article class="lesson-step" id="step3">
+        <span>Step 3</span>
+        <div><h3>Start With x</h3><p>Row 1 already contains 6 inches. The remaining piece must also be 6 inches to reach 12, so <code>x = 6</code>. Every piece called <code>x</code> has that same length.</p></div>
+      </article>
+
+      <article class="lesson-step" id="step4">
+        <span>Step 4</span>
+        <div><h3>The Domino Run</h3><p>Row 3 becomes <code>4 + 6 + z = 12</code>, leaving <code>z = 2</code>. Row 2 splits the full 12 inches into three equal cuts, so each <code>y = 4</code>.</p></div>
+      </article>
+
+      <article class="lesson-step" id="step5">
+        <span>Step 5</span>
+        <div><h3>The Seam (=)</h3><p>The equal sign is a two-way seam between arrangements containing the same amount. The pieces can unpack into 6 + 6 or fuse back into 12 without creating or destroying any timber.</p></div>
+      </article>
+    </section>
+
+    <footer>Bad Boi Bogans · Grounded intuition first</footer>
+  </main>
+
+  <script type="module" src="lesson.js"></script>
+</body>
+</html>
