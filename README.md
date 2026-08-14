@@ -9,8 +9,9 @@ Static GitHub Pages edition of Thom's browser tools.
 - `/prompt-budget-builder/` — Prompt Budget Builder
 - `/recap-invocation-lab/` — RECAP Invocation Lab
 - `/between-seams-pocket-console/` — Between the Seams Pocket Console
+- `/bad-boi-bogans/lesson-1/` — Bad Boi Bogans Lesson 1: The Pole Puzzle
 
-All four tools run entirely in the browser. Local drafts and settings remain in
+The tools and lesson run entirely in the browser. Local drafts and settings remain in
 the visitor's browser storage. The preservation checkpoint, evidence files,
 screenshots, recordings, and continuity notes are intentionally excluded.
 
