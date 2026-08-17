@@ -53,6 +53,15 @@ const tools = [
     accent: "amber",
     tags: ["algebra", "story", "interactive"],
   },
+  {
+    title: "The Claim Crucible",
+    kicker: "Evidence courtroom",
+    description: "Investigate Project Looking Glass through competing cases, source-quality filters, contradictions, provenance, and an explicit provisional verdict.",
+    href: "/claim-crucible/",
+    mark: "07",
+    accent: "violet",
+    tags: ["evidence", "research", "interactive"],
+  },
 ];
 
 const root = document.getElementById("root");
