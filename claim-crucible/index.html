@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Claim Crucible — an interactive evidence courtroom for the Project Looking Glass claim." />
+  <title>The Claim Crucible — Project Looking Glass</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#case-main">Skip to case content</a>
+
+  <header class="cc-header" role="banner">
+    <div class="cc-header-inner">
+      <div class="cc-brand">
+        <span class="cc-brand-mark" aria-hidden="true">&#9878;</span>
+        <span class="cc-title">The Claim Crucible</span>
+      </div>
+      <nav class="cc-nav" aria-label="Case sections">
+        <a href="#claim" data-scroll>Claim</a>
+        <a href="#verdict" data-scroll>Verdict</a>
+        <a href="#matrix" data-scroll>Subclaims</a>
+        <a href="#evidence" data-scroll>Evidence</a>
+        <a href="#contradictions" data-scroll>Contradictions</a>
+        <a href="#timeline" data-scroll>Timeline</a>
+        <a href="#change" data-scroll>Change verdict</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="case-main" class="cc-main" role="main">
+
+    <!-- CLAIM -->
+    <section id="claim" class="cc-section" aria-labelledby="head-claim">
+      <div class="cc-section-head">
+        <span class="cc-kicker">The claim under examination</span>
+        <h1 id="head-claim" class="cc-claim-text"></h1>
+      </div>
+      <div class="cc-epistemic-note" id="epistemic-note"></div>
+    </section>
+
+    <!-- VERDICT -->
+    <section id="verdict" class="cc-section" aria-labelledby="head-verdict">
+      <h2 class="cc-h2">Provisional Verdict</h2>
+      <div class="cc-verdict-bands">
+        <div class="cc-verdict-card" id="verdict-card"></div>
+        <div class="cc-quality-summary" id="quality-summary"></div>
+      </div>
+      <div id="verdict-explanation" class="cc-verdict-explanation"></div>
+      <div class="cc-epistemic-table" id="epistemic-table"></div>
+    </section>
+
+    <!-- AGREED / DISPUTED / PROVENANCE -->
+    <section id="facts" class="cc-section" aria-labelledby="head-facts">
+      <h2 class="cc-h2">Agreed Facts, Disputed Assertions &amp; Provenance</h2>
+      <div class="cc-facts-grid">
+        <div class="cc-panel">
+          <h3>Agreed Facts</h3>
+          <ul id="agreed-facts"></ul>
+        </div>
+        <div class="cc-panel">
+          <h3>Disputed Assertions</h3>
+          <ul id="disputed-assertions"></ul>
+        </div>
+      </div>
+      <div class="cc-panel">
+        <h3>Provenance &amp; Circular-Source Warnings</h3>
+        <ul id="provenance-list" class="cc-warn-list"></ul>
+      </div>
+    </section>
+
+    <!-- SUBCLAIM MATRIX -->
+    <section id="matrix" class="cc-section" aria-labelledby="head-matrix">
+      <h2 class="cc-h2">Subclaim Matrix</h2>
+      <div class="cc-table-wrap" role="region" tabindex="0" aria-label="Subclaim assessment matrix">
+        <table class="cc-matrix" id="subclaim-matrix">
+          <thead>
+            <tr>
+              <th scope="col">Subclaim</th>
+              <th scope="col">Status</th>
+              <th scope="col">Supporting sources</th>
+              <th scope="col">Challenging sources</th>
+              <th scope="col">What would settle it</th>
+            </tr>
+          </thead>
+          <tbody id="subclaim-matrix-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SUPPORTING / OPPOSING CASE -->
+    <section id="evidence" class="cc-section" aria-labelledby="head-evidence">
+      <h2 class="cc-h2">The Two Cases</h2>
+      <div class="cc-case-cols">
+        <article class="cc-case-col cc-supporting">
+          <h3>Supporting Case</h3>
+          <ul class="cc-case-list" id="supporting-case"></ul>
+        </article>
+        <article class="cc-case-col cc-opposing">
+          <h3>Opposing / Sceptical Case</h3>
+          <ul class="cc-case-list" id="opposing-case"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SOURCE LIBRARY -->
+    <section id="library" class="cc-section" aria-labelledby="head-library">
+      <h2 class="cc-h2">Source Library</h2>
+      <div class="cc-filters" role="group" aria-label="Filter sources">
+        <label class="cc-search">
+          <span>Quick search</span>
+          <input id="source-search" type="search" placeholder="Search sources&hellip;" autocomplete="off" />
+        </label>
+        <label class="cc-filter">
+          <span>Status</span>
+          <select id="filter-status">
+            <option value="all">All statuses</option>
+            <option value="supports">Supports</option>
+            <option value="challenges">Challenges</option>
+            <option value="contextual">Contextual</option>
+            <option value="ambiguous">Ambiguous</option>
+          </select>
+        </label>
+        <label class="cc-filter">
+          <span>Authority</span>
+          <select id="filter-authority">
+            <option value="all">All authority</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </label>
+        <label class="cc-filter">
+          <span>Verification</span>
+          <select id="filter-verification">
+            <option value="all">All verification</option>
+            <option value="inspected">Directly inspected</option>
+            <option value="search">Search-result evidence only</option>
+            <option value="unresolved">Unresolved</option>
+          </select>
+        </label>
+        <button id="filter-reset" class="cc-btn cc-btn-ghost" type="button">Reset filters</button>
+        <span id="source-count" class="cc-source-count" aria-live="polite"></span>
+      </div>
+      <ul class="cc-source-grid" id="source-grid"></ul>
+    </section>
+
+    <!-- CONTRADICTIONS -->
+    <section id="contradictions" class="cc-section" aria-labelledby="head-contradictions">
+      <h2 class="cc-h2">Contradiction Panel</h2>
+      <ul id="contradiction-list" class="cc-contradictions"></ul>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="cc-section" aria-labelledby="head-timeline">
+      <h2 class="cc-h2">Concise Timeline</h2>
+      <ol class="cc-timeline" id="timeline-list"></ol>
+    </section>
+
+    <!-- VERDICT CHANGE / UNRESOLVED -->
+    <section id="change" class="cc-section" aria-labelledby="head-change">
+      <h2 class="cc-h2">What Would Change This Verdict?</h2>
+      <ul class="cc-change-list" id="verdict-change-list"></ul>
+    </section>
+
+    <section id="unresolved" class="cc-section" aria-labelledby="head-unresolved">
+      <h2 class="cc-h2">Unresolved Research Questions</h2>
+      <ul class="cc-change-list" id="unresolved-questions"></ul>
+    </section>
+
+    <footer class="cc-footer">
+      <p>The Claim Crucible &mdash; a self-contained offline evidence viewer. Case data compiled by named research subagents; every factual statement is tied to a source or labelled OBSERVED / INFERRED / UNRESOLVED. This is an independent analysis, not a statement by any government body.</p>
+    </footer>
+  </main>
+
+  <script src="case-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
