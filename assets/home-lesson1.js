@@ -44,6 +44,15 @@ const tools = [
     accent: "amber",
     tags: ["algebra", "animation", "puzzle"],
   },
+  {
+    title: "Curtain Calamity",
+    kicker: "Algebra lesson",
+    description: "Fix a broken curtain rod with one algebra move by solving x + 63 = 200.",
+    href: "/curtain-calamity/",
+    mark: "06",
+    accent: "amber",
+    tags: ["algebra", "story", "interactive"],
+  },
 ];
 
 const root = document.getElementById("root");
